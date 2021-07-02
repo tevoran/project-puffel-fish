@@ -32,8 +32,6 @@ int main()
 		world.render();
 		player.render();
 
-
-
 		te.update();
 
 		te.update_input();

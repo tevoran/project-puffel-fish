@@ -19,8 +19,13 @@ namespace ppf
 	class world
 	{
 	private:
-		t3v::object2d m_world_base_bottom_hurdle;
-		t3v::sprite *m_world_base_bottom_hurdle_sprite=NULL;
+		//bottom
+		t3v::object2d m_bottom_hurdle;
+		t3v::sprite *m_bottom_hurdle_sprite=NULL;
+
+		//top
+		t3v::object2d m_top_hurdle;
+		t3v::sprite *m_top_hurdle_sprite=NULL;
 	public:
 		world();
 		~world();
