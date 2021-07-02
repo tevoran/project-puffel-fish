@@ -32,11 +32,7 @@ int main()
 	bool quit=false;
 	while(!quit)
 	{
-		world.render();
-	    player.gravity(time.get_delta());
-	    player.render();
-
-	    //updates
+		//updates
 		te.update();
 		time.update();
 		te.update_input();
@@ -44,6 +40,14 @@ int main()
 		{
 			quit=true;
 		}
+
+		//world
+		world.render();
+
+		//player
+		player.input();
+	    player.gravity(time.get_delta());
+	    player.render();
 	}
 
 	return 0;

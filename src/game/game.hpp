@@ -7,6 +7,7 @@
 //definitions
 #define GRAVITY 200
 #define PLAYER_SIZE 32*4
+#define PLAYER_JUMP_SPEED 250
 
 
 namespace ppf
@@ -41,6 +42,7 @@ namespace ppf
 		player(const char *path_to_player_sprite);
 		~player();
 
+		void input();
 		void gravity(float t_delta);
 		void render(){m_player_object.render();};
 	};

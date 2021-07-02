@@ -15,6 +15,15 @@ ppf::player::~player()
 	delete m_player_sprite;
 }
 
+void ppf::player::input()
+{
+	t3v::engine& te=t3v::engine::get();
+	if(te.key_is_pressed(SDL_SCANCODE_SPACE))
+	{
+		yVel=-PLAYER_JUMP_SPEED;
+	}
+}
+
 void ppf::player::gravity(float t_delta) {
 	//applying gravity
     yVel+=GRAVITY*t_delta;

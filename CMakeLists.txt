@@ -2,10 +2,10 @@ cmake_minimum_required(VERSION 3.16)
 project("puffer-fish")
 
 #BASICALLY REALEASE MODE
-SET(CMAKE_CXX_FLAGS  "-m64 -Ofast -flto -march=native -funroll-loops")
+#SET(CMAKE_CXX_FLAGS  "-m64 -Ofast -flto -march=native -funroll-loops")
 
 #DEBUGMODE
-#SET(CMAKE_CXX_FLAGS "-g -ggdb -fsanitize=address")
+SET(CMAKE_CXX_FLAGS "-g -ggdb")
 #SET(CMAKE_CXX_FLAGS "-g")
 
 #PROFILERMODE
