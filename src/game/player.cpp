@@ -18,7 +18,7 @@ ppf::player::~player()
 void ppf::player::input()
 {
 	t3v::engine& te=t3v::engine::get();
-	if(te.key_is_pressed(SDL_SCANCODE_SPACE))
+	if(te.key_is_pressed(SDL_SCANCODE_SPACE) && yVel>=0)
 	{
 		yVel=-PLAYER_JUMP_SPEED;
 	}
