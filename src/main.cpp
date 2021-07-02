@@ -44,7 +44,7 @@ int main()
 			quit=true;
 		}
 		//background
-		background.render();
+		background.render(time.get_delta());
 
 		//world
 		world.render();

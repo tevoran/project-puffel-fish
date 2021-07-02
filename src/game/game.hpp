@@ -3,6 +3,7 @@
 #include <te.hpp>
 #include <chrono>
 #include <ratio>
+#include <cstdlib>
 
 //definitions
 #define GRAVITY 200
@@ -69,13 +70,25 @@ namespace ppf
 	class background
 	{
 	private:
+		struct bubble_struct
+		{
+			t3v::object2d object;
+			float xPos;
+			float yPos;
+			float xVel=0;
+			float yVel=0;
+		};
+
+
 		t3v::object2d m_bubble;
 		t3v::sprite *m_bubble_sprite=NULL;
+
+		std::vector<bubble_struct> bubbles;
 
 	public:
 		background();
 		~background();
 
-		void render();
+		void render(float t_delta);
 	};
 }
