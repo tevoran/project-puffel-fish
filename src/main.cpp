@@ -26,6 +26,9 @@ int main()
 	//player
 	ppf::player player("../assets/Kugelfisch.png");
 
+	//background
+	ppf::background background;
+
 	//world
 	ppf::world world;
 
@@ -40,6 +43,8 @@ int main()
 		{
 			quit=true;
 		}
+		//background
+		background.render();
 
 		//world
 		world.render();

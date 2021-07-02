@@ -7,7 +7,7 @@
 //definitions
 #define GRAVITY 200
 #define PLAYER_SIZE 32*4
-#define PLAYER_JUMP_SPEED 250
+#define PLAYER_JUMP_SPEED 275
 
 
 namespace ppf
@@ -62,6 +62,19 @@ namespace ppf
 	public:
 		world();
 		~world();
+
+		void render();
+	};
+
+	class background
+	{
+	private:
+		t3v::object2d m_bubble;
+		t3v::sprite *m_bubble_sprite=NULL;
+
+	public:
+		background();
+		~background();
 
 		void render();
 	};
