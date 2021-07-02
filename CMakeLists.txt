@@ -32,3 +32,5 @@ target_link_libraries(puffer-fish LINK_PRIVATE "${SDL2}")
 target_link_libraries(puffer-fish LINK_PRIVATE "${SDL2_ttf}")
 target_link_libraries(puffer-fish LINK_PRIVATE "${SDL2_image}")
 target_link_libraries(puffer-fish LINK_PRIVATE Threads::Threads)
+
+add_definitions(-std=c++11)
