@@ -23,10 +23,13 @@ int main()
 	//player
 	ppf::player player("../assets/Kugelfisch.png");
 
+	//world
+	ppf::world world;
 
 	bool quit=false;
 	while(!quit)
 	{
+		world.render();
 		player.render();
 
 

@@ -14,5 +14,17 @@ namespace ppf
 		~player();
 
 		void render(){m_player_object.render();};
-	};	
+	};
+
+	class world
+	{
+	private:
+		t3v::object2d m_world_base_bottom_hurdle;
+		t3v::sprite *m_world_base_bottom_hurdle_sprite=NULL;
+	public:
+		world();
+		~world();
+
+		void render();
+	};
 }
