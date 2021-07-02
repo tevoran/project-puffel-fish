@@ -1,5 +1,6 @@
 # Prerequisites
 *.d
+.idea
 
 # Compiled Object files
 *.slo
@@ -30,3 +31,7 @@ build
 *.exe
 *.out
 *.app
+/CMakeLists_WIN.txt
+/cmake/FindSDL2.cmake
+/cmake/FindSDL2_ttf.cmake
+/cmake-build-debug/
