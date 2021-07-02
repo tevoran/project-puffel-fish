@@ -14,6 +14,9 @@ int main()
 
 	te.start_renderer(TE_RENDERER_SOFTWARE_RASTERIZER_SINGLE_THREAD);
 
+	//timer
+	ppf::time time;
+
 	//reading test font
 	t3v::font font("../assets/fonts/OpenSans-Regular.ttf");
 
@@ -30,12 +33,12 @@ int main()
 	while(!quit)
 	{
 		world.render();
-
+		std::cout << time.get_delta() << std::endl;
 	    player.gravity();
 	    player.render();
 
 		te.update();
-
+		time.update();
 		te.update_input();
 		if(te.key_is_pressed(SDL_SCANCODE_ESCAPE))
 		{

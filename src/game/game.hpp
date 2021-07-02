@@ -1,9 +1,23 @@
 #pragma once
 
 #include <te.hpp>
+#include <chrono>
+#include <ratio>
 
 namespace ppf
 {
+	class time
+	{
+	private:
+		std::chrono::steady_clock::time_point t_old;
+		std::chrono::steady_clock::time_point t_new;
+		float t_delta_float;
+	public:
+		time();
+		void update();
+		float get_delta();
+	};
+
 	class player
 	{
 	private:
