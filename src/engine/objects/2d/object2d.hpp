@@ -19,6 +19,10 @@ namespace t3v
 		void use_sprite(t3v::sprite& sprite);
 		void position(const int x, const int y);
 		void scale(const float scale);
+		int getxPos();
+		int getyPos();
 		void render();
-	};
+
+        const SDL_Rect &getMDstRect() const;
+    };
 }

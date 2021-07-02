@@ -1,4 +1,6 @@
 #include <te.hpp>
+#include "object2d.hpp"
+
 
 t3v::object2d::object2d()
 {
@@ -32,6 +34,14 @@ void t3v::object2d::scale(const float scale)
 {
 	m_dst_rect.w=(float)m_src_rect.w*scale;
 	m_dst_rect.h=(float)m_src_rect.h*scale;
+}
+
+int t3v::object2d::getxPos() {
+    return m_dst_rect.x;
+}
+
+int t3v::object2d::getyPos() {
+    return m_dst_rect.y;
 }
 
 

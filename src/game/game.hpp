@@ -9,10 +9,13 @@ namespace ppf
 	private:
 		t3v::object2d  m_player_object;
 		t3v::sprite *m_player_sprite=NULL;
+		float xPos=0;
+		float yPos=0;
 	public:
 		player(const char *path_to_player_sprite);
 		~player();
 
+		void gravity();
 		void render(){m_player_object.render();};
 	};
 

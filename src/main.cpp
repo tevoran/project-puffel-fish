@@ -30,7 +30,9 @@ int main()
 	while(!quit)
 	{
 		world.render();
-		player.render();
+
+	    player.gravity();
+	    player.render();
 
 		te.update();
 
