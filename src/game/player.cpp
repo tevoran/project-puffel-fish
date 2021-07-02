@@ -2,12 +2,12 @@
 
 ppf::player::player(const char *path_to_player_sprite)
 {
-    xPos = 100;
-    yPos = 400;
+    xPos = 300;
+    yPos = 0;
 	m_player_sprite = new t3v::sprite(path_to_player_sprite);
 	m_player_object.use_sprite(*m_player_sprite);
 	m_player_object.position(xPos,yPos);
-	m_player_object.scale(4);
+	m_player_object.scale(4); //is hardcoded, if this is changed, change it in game.hpp as well
 }
 
 ppf::player::~player()
@@ -15,7 +15,21 @@ ppf::player::~player()
 	delete m_player_sprite;
 }
 
-void ppf::player::gravity() {
-    yPos+=0.4;
+void ppf::player::gravity(float t_delta) {
+	//applying gravity
+    yVel+=GRAVITY*t_delta;
+
+    //using new position
+    xPos+=xVel*t_delta;
+    yPos+=yVel*t_delta;
+
+    //crashing on ground
+    t3v::engine& te=t3v::engine::get();
+
+    if(yPos>(te.get_resy()-PLAYER_SIZE))
+    {
+    	yPos=(te.get_resy()-PLAYER_SIZE);
+    	yVel=0;
+    }
     m_player_object.position(xPos, yPos);
 }
