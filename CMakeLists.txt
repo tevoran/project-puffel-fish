@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project("T3Vtech")
+project("puffer-fish")
 
 #BASICALLY REALEASE MODE
 SET(CMAKE_CXX_FLAGS  "-m64 -Ofast -flto -march=native -funroll-loops")
@@ -25,10 +25,10 @@ include_directories(vendor/yamc/include/)
 
 #creating the executable of the engine test
 include_directories(src/)
-file(GLOB_RECURSE "T3Vtech" SRC src/*.cpp)
-add_executable(T3Vtech ${T3Vtech})
+file(GLOB_RECURSE "puffer-fish" SRC src/*.cpp)
+add_executable(puffer-fish ${puffer-fish})
 
-target_link_libraries(T3Vtech LINK_PRIVATE "${SDL2}")
-target_link_libraries(T3Vtech LINK_PRIVATE "${SDL2_ttf}")
-target_link_libraries(T3Vtech LINK_PRIVATE "${SDL2_image}")
-target_link_libraries(T3Vtech LINK_PRIVATE Threads::Threads)
+target_link_libraries(puffer-fish LINK_PRIVATE "${SDL2}")
+target_link_libraries(puffer-fish LINK_PRIVATE "${SDL2_ttf}")
+target_link_libraries(puffer-fish LINK_PRIVATE "${SDL2_image}")
+target_link_libraries(puffer-fish LINK_PRIVATE Threads::Threads)

@@ -15,7 +15,7 @@ int main()
 
 	//reading test font
 	t3v::font font("../assets/fonts/OpenSans-Regular.ttf");
-	std::string text="T3Vtech - software renderer";
+	std::string text="HALLO";
 
 	te.activate_fps_counter(true, &font);
 
@@ -23,11 +23,6 @@ int main()
 	bool quit=false;
 	while(!quit)
 	{
-		box.rotate({1,0,0},0.4);
-		box.render();
-
-		//hase2.render();
-		hase.render();
 		te.print_single_frame(text, font, {10,240,10, 255}, 32, te.get_resx()-430, te.get_resy()-48);
 
 		te.update();
