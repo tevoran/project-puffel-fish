@@ -1,4 +1,5 @@
 #include "te.hpp"
+#include "game/game.hpp"
 
 
 
@@ -15,15 +16,20 @@ int main()
 
 	//reading test font
 	t3v::font font("../assets/fonts/OpenSans-Regular.ttf");
-	std::string text="HALLO";
 
 	te.activate_fps_counter(true, &font);
+
+
+	//player
+	ppf::player player("../assets/Kugelfisch.png");
 
 
 	bool quit=false;
 	while(!quit)
 	{
-		te.print_single_frame(text, font, {10,240,10, 255}, 32, te.get_resx()-430, te.get_resy()-48);
+		player.render();
+
+
 
 		te.update();
 
