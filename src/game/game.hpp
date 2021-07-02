@@ -4,6 +4,11 @@
 #include <chrono>
 #include <ratio>
 
+//definitions
+#define GRAVITY 200
+#define PLAYER_SIZE 32*4
+
+
 namespace ppf
 {
 	class time
@@ -23,13 +28,20 @@ namespace ppf
 	private:
 		t3v::object2d  m_player_object;
 		t3v::sprite *m_player_sprite=NULL;
+
+		//position
 		float xPos=0;
 		float yPos=0;
+
+		//speed
+		float xVel=0;
+		float yVel=0;
+
 	public:
 		player(const char *path_to_player_sprite);
 		~player();
 
-		void gravity();
+		void gravity(float t_delta);
 		void render(){m_player_object.render();};
 	};
 

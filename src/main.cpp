@@ -33,10 +33,10 @@ int main()
 	while(!quit)
 	{
 		world.render();
-		std::cout << time.get_delta() << std::endl;
-	    player.gravity();
+	    player.gravity(time.get_delta());
 	    player.render();
 
+	    //updates
 		te.update();
 		time.update();
 		te.update_input();
