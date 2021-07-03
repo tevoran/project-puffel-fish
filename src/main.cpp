@@ -17,7 +17,7 @@ int main()
 	//timer
 	srand(time(NULL));
 	ppf::time time;
-	float time_passed;
+	float time_passed = 0;
 
 	//reading test font
 	t3v::font font("../assets/fonts/OpenSans-Regular.ttf");
@@ -59,9 +59,9 @@ int main()
 	    player.render();
 	    te.print_single_frame("HP: " + std::to_string((int)player.getHp()), font,
                               {255,0,0,255},48,1100,25);
-	    //test for damage function TODO: delete before release
-	    if((int) time_passed % 5 == 0)
-	        //player.damage(0.05);
+	    //test for collisions doing damage
+	    if(player.takesDamage(world))
+	        player.damage(0.1);
 
 
 	    //misc

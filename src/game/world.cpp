@@ -173,3 +173,11 @@ void ppf::world::render(float t_delta)
 		}
 	}
 }
+
+const std::vector<ppf::world::world_element> &ppf::world::getMBottom() const {
+    return m_bottom;
+}
+
+const std::vector<ppf::world::world_element> &ppf::world::getMTop() const {
+    return m_top;
+}
