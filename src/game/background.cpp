@@ -11,7 +11,7 @@ ppf::background::background()
 
 	bubble_struct tmp_bubble;
 	tmp_bubble.yVel=rand()%40-70;
-	tmp_bubble.xVel=-GAME_SPEED_HORIZONTAL;
+	tmp_bubble.xVel=-BACKGROUND_SPEED_HORIZONTAL;
 
 	for(int i=0; i<BUBBLE_COUNT; i++)
 	{

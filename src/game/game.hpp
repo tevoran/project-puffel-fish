@@ -4,14 +4,19 @@
 #include <chrono>
 #include <ratio>
 #include <cstdlib>
+#include <time.h>
 
 //definitions
 #define GRAVITY 200
 #define PLAYER_SIZE 32*4
 #define PLAYER_JUMP_SPEED 275
 
-#define GAME_SPEED_HORIZONTAL 40
+#define BACKGROUND_SPEED_HORIZONTAL 40
 #define BUBBLE_COUNT 25
+
+#define GAME_SPEED_HORIZONTAL 60
+#define WORLD_ELEMENT_SIZE_X 32
+#define WORLD_ELEMENT_SIZE_Y 512
 
 namespace ppf
 {
@@ -66,13 +71,11 @@ namespace ppf
 
 		//bottom
 		t3v::object2d m_bottom_hurdle;
-        t3v::object2d m_bottom_hurdle1;
 		t3v::sprite *m_bottom_hurdle_sprite=NULL;
 		std::vector<world_element> m_bottom;
 
 		//top
 		t3v::object2d m_top_hurdle;
-        t3v::object2d m_top_hurdle1;
 		t3v::sprite *m_top_hurdle_sprite=NULL;
 		std::vector<world_element> m_top;
 
@@ -80,7 +83,7 @@ namespace ppf
 		world();
 		~world();
 
-		void render();
+		void render(float t_delta);
 	};
 
 	class background

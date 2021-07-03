@@ -15,6 +15,7 @@ int main()
 	te.start_renderer(TE_RENDERER_SOFTWARE_RASTERIZER_SINGLE_THREAD);
 
 	//timer
+	srand(time(NULL));
 	ppf::time time;
 
 	//reading test font
@@ -47,7 +48,7 @@ int main()
 		background.render(time.get_delta());
 
 		//world
-		world.render();
+		world.render(time.get_delta());
 
 		//player
 		player.input();
