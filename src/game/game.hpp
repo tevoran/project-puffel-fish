@@ -89,10 +89,6 @@ namespace ppf
 		float yVel=0;
 
 		float hp=100;
-    public:
-        float getHp() const;
-
-        void damage(float hp);
 
     public:
 		player(const char *path_to_player_sprite);
@@ -101,7 +97,9 @@ namespace ppf
 		void input();
 		void gravity(float t_delta);
 		void render(){m_player_object.render();};
-        bool takesDamage(ppf::world &pWorld);
+        float getHp() const;
+        void damage(float hp);
+        bool takesDamage(ppf::world &pWorld) const;
     };
 
 	class background
