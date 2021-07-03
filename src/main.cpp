@@ -17,6 +17,7 @@ int main()
 	//timer
 	srand(time(NULL));
 	ppf::time time;
+	float time_passed;
 
 	//reading test font
 	t3v::font font("../assets/fonts/OpenSans-Regular.ttf");
@@ -33,6 +34,7 @@ int main()
 	//world
 	ppf::world world;
 
+
 	bool quit=false;
 	while(!quit)
 	{
@@ -40,6 +42,7 @@ int main()
 		te.update();
 		time.update();
 		te.update_input();
+		time_passed += time.get_delta();
 		if(te.key_is_pressed(SDL_SCANCODE_ESCAPE))
 		{
 			quit=true;
@@ -54,6 +57,14 @@ int main()
 		player.input();
 	    player.gravity(time.get_delta());
 	    player.render();
+	    te.print_single_frame("HP: " + std::to_string((int)player.getHp()), font,
+                              {255,0,0,255},48,1100,25);
+
+
+	    //misc
+        te.print_single_frame("Time: "+ std::to_string((int) time_passed) + " seconds", font,
+                              {0,255,255,255}, 36, 525, 25);
+
 	}
 
 	return 0;

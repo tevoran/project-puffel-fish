@@ -46,7 +46,13 @@ namespace ppf
 		float xVel=0;
 		float yVel=0;
 
-	public:
+		float hp=100;
+    public:
+        float getHp() const;
+
+        void damage(float hp);
+
+    public:
 		player(const char *path_to_player_sprite);
 		~player();
 
