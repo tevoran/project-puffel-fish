@@ -42,3 +42,11 @@ void ppf::player::gravity(float t_delta) {
     }
     m_player_object.position(xPos, yPos);
 }
+
+float ppf::player::getHp() const {
+    return hp;
+}
+
+void ppf::player::damage(float pDamage) {
+    hp -= pDamage;
+}
