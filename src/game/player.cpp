@@ -51,7 +51,7 @@ void ppf::player::damage(float pDamage) {
     hp -= pDamage;
 }
 
-bool ppf::player::takesDamage(ppf::world &pWorld){
+bool ppf::player::takesDamage(ppf::world &pWorld) const{
     //check with top objects
     for(int i; i < pWorld.getMTop().size(); i++){
         if(ppf::is_colliding(xPos, yPos, PLAYER_SIZE_X*2, PLAYER_SIZE_Y*2, pWorld.getMTop().at(i).xPos,

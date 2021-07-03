@@ -6,7 +6,7 @@
 int main()
 {
 	t3v::engine& te=t3v::engine::get();
-	
+
 	//setting properties
 	te.set_resx(1366);
 	te.set_resy(768);
@@ -67,8 +67,21 @@ int main()
 	    //misc
         te.print_single_frame("Time: "+ std::to_string((int) time_passed) + " seconds", font,
                               {0,255,255,255}, 36, 525, 25);
-        if(player.getHp() < 0)
-            quit=true;
+
+        if(player.getHp() < 0) {
+            while (!quit) {
+                te.update();
+                te.update_input();
+                if (te.key_is_pressed(SDL_SCANCODE_ESCAPE)) {
+                    quit = true;
+                }
+                background.render(time.get_delta());
+                te.print_single_frame("Thanks for Playing!", font, {0, 255, 255, 255},
+                                      36, 525, 200);
+                te.print_single_frame("You survived " + std::to_string((int) time_passed) + " seconds", font,
+                                      {0, 255, 255, 255}, 36, 525, 400);
+            }
+        }
 	}
 
 	return 0;

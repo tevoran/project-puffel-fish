@@ -99,7 +99,7 @@ namespace ppf
 		void render(){m_player_object.render();};
         float getHp() const;
         void damage(float hp);
-        bool takesDamage(ppf::world &pWorld);
+        bool takesDamage(ppf::world &pWorld) const;
     };
 
 	class background
