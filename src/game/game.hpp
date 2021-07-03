@@ -11,6 +11,8 @@
 #define PLAYER_JUMP_SPEED 275
 
 
+#define BUBBLE_COUNT 35
+
 namespace ppf
 {
 	class time

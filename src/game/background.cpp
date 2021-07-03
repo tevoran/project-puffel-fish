@@ -1,6 +1,5 @@
 #include "game.hpp"
 
-#define BUBBLE_COUNT 25
 
 ppf::background::background()
 {
@@ -11,13 +10,13 @@ ppf::background::background()
 	t3v::engine& te=t3v::engine::get();
 
 	bubble_struct tmp_bubble;
-	tmp_bubble.yVel=rand()%20-35;
-	tmp_bubble.xVel=0;
+	tmp_bubble.yVel=rand()%40-70;
+	tmp_bubble.xVel=-30;
 
 	for(int i=0; i<BUBBLE_COUNT; i++)
 	{
 		tmp_bubble.object=m_bubble;
-		tmp_bubble.yVel=rand()%20-25;
+		tmp_bubble.yVel=rand()%65-70;
 		tmp_bubble.xPos=rand()%te.get_resx();
 		tmp_bubble.yPos=rand()%te.get_resy();
 
@@ -44,9 +43,16 @@ void ppf::background::render(float t_delta)
 
 		if(bubbles[i].yPos<-PLAYER_SIZE)
 		{
-			bubbles[i].yVel=rand()%20-35;
-			bubbles[i].xPos=rand()%te.get_resx();
-			bubbles[i].yPos=rand()%te.get_resy();
+			bubbles[i].yVel=rand()%65-70;
+			bubbles[i].xPos=rand()%(te.get_resx()/2)+(te.get_resx()/2);
+			bubbles[i].yPos=rand()%(te.get_resy()/2)+(te.get_resy()/2);
+		}
+
+		if(bubbles[i].xPos<-PLAYER_SIZE)
+		{
+			bubbles[i].yVel=rand()%65-70;
+			bubbles[i].xPos=rand()%(te.get_resx()/2)+(te.get_resx()/2);
+			bubbles[i].yPos=rand()%(te.get_resy()/2)+(te.get_resy()/2);
 		}
 
 		//render
