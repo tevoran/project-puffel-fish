@@ -59,12 +59,16 @@ int main()
 	    player.render();
 	    te.print_single_frame("HP: " + std::to_string((int)player.getHp()), font,
                               {255,0,0,255},48,1100,25);
+	    //test for damage function TODO: delete before release
+	    if((int) time_passed % 5 == 0)
+	        player.damage(0.05);
 
 
 	    //misc
         te.print_single_frame("Time: "+ std::to_string((int) time_passed) + " seconds", font,
                               {0,255,255,255}, 36, 525, 25);
-
+        if(player.getHp() < 0)
+            quit=true;
 	}
 
 	return 0;
