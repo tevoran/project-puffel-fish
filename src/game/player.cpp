@@ -54,14 +54,14 @@ void ppf::player::damage(float pDamage) {
 bool ppf::player::takesDamage(ppf::world &pWorld) const{
     //check with top objects
     for(int i; i < pWorld.getMTop().size(); i++){
-        if(ppf::is_colliding(xPos, yPos, PLAYER_SIZE_X*2, PLAYER_SIZE_Y*2, pWorld.getMTop().at(i).xPos,
+        if(ppf::is_colliding(xPos + PLAYER_SIZE_X, yPos + PLAYER_SIZE_Y, PLAYER_SIZE_X*2, PLAYER_SIZE_Y*2, pWorld.getMTop().at(i).xPos,
                              pWorld.getMTop().at(i).yPos, WORLD_ELEMENT_SIZE_X, WORLD_ELEMENT_SIZE_Y))
             return true;
     }
 
     //check with bottom objects
     for(int i; i < pWorld.getMBottom().size(); i++){
-        if(ppf::is_colliding(xPos, yPos, PLAYER_SIZE_X*2, PLAYER_SIZE_Y*2, pWorld.getMBottom().at(i).xPos,
+        if(ppf::is_colliding(xPos + PLAYER_SIZE_X, yPos + PLAYER_SIZE_Y, PLAYER_SIZE_X*2, PLAYER_SIZE_Y*2, pWorld.getMBottom().at(i).xPos,
                              pWorld.getMBottom().at(i).yPos, WORLD_ELEMENT_SIZE_X, WORLD_ELEMENT_SIZE_Y))
             return true;
     }
