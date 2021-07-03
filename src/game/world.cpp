@@ -114,30 +114,42 @@ void ppf::world::render(float t_delta)
 
 	//respawn
 	x_spawn=x_current_max;
-	//top
-	for(int i=0; i<m_top.size(); i++)
+
+	int i_max=0;
+	if(m_top.size()>=m_bottom.size())
 	{
-		//respawn
-		if(m_top[i].xPos<-WORLD_ELEMENT_SIZE_X)
-		{
-			x_spawn+=HURDLE_MIN_SPACE+rand()%(te.get_resx()/9);
-			m_top[i].xPos=x_spawn;
-			m_top[i].yPos=-WORLD_ELEMENT_SIZE_Y+rand()%WORLD_ELEMENT_SIZE_Y;
-		}
+		i_max=m_top.size();
+	}
+	else
+	{
+		i_max=m_bottom.size();
 	}
 
-	//bottom
-	for(int i=0; i<m_bottom.size(); i++)
+	//top
+	for(int i=0; i<i_max; i++)
 	{
-		//respawn
-		if(m_bottom[i].xPos<-WORLD_ELEMENT_SIZE_X)
+		//respawn top
+		if(i<m_top.size())
 		{
-			x_spawn+=HURDLE_MIN_SPACE+rand()%(te.get_resx()/9);
-			m_bottom[i].xPos=x_spawn;
-			m_bottom[i].yPos=te.get_resy()-rand()%WORLD_ELEMENT_SIZE_Y;
+			if(m_top[i].xPos<-WORLD_ELEMENT_SIZE_X)
+			{
+				x_spawn+=HURDLE_MIN_SPACE+rand()%(te.get_resx()/12);
+				m_top[i].xPos=x_spawn;
+				m_top[i].yPos=-WORLD_ELEMENT_SIZE_Y+rand()%WORLD_ELEMENT_SIZE_Y;
+			}
+		}
+
+		//respawn bottom
+		if(i<m_bottom.size())
+		{
+			if(m_bottom[i].xPos<-WORLD_ELEMENT_SIZE_X)
+			{
+				x_spawn+=HURDLE_MIN_SPACE+rand()%(te.get_resx()/12);
+				m_bottom[i].xPos=x_spawn;
+				m_bottom[i].yPos=te.get_resy()-rand()%WORLD_ELEMENT_SIZE_Y;
+			}			
 		}
 	}
-	std::cout << x_current_max << std::endl;
 }
 
 const std::vector<ppf::world::world_element> &ppf::world::getMBottom() const {
