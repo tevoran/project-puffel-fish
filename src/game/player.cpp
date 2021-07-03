@@ -50,3 +50,22 @@ float ppf::player::getHp() const {
 void ppf::player::damage(float pDamage) {
     hp -= pDamage;
 }
+
+bool ppf::player::takesDamage(ppf::world &pWorld) {
+    //check with top objects
+    for(int i; i < pWorld.getMTop().size(); i++){
+        if(ppf::is_colliding(xPos, yPos, PLAYER_SIZE_X, PLAYER_SIZE_Y, pWorld.getMTop().at(i).xPos,
+                             pWorld.getMTop().at(i).yPos, WORLD_ELEMENT_SIZE_X, WORLD_ELEMENT_SIZE_Y))
+            return true;
+    }
+    //check with bottom objects
+    for(int i; i < pWorld.getMBottom().size(); i++){
+        if(ppf::is_colliding(xPos, yPos, PLAYER_SIZE_X, PLAYER_SIZE_Y, pWorld.getMBottom().at(i).xPos,
+                             pWorld.getMBottom().at(i).yPos, WORLD_ELEMENT_SIZE_X, WORLD_ELEMENT_SIZE_Y))
+            return true;
+    }
+
+    return false;
+}
+
+
