@@ -3,7 +3,7 @@
 
 ppf::background::background()
 {
-	m_background_sprite = new t3v::sprite("../assets/bg_big.bmp");
+	m_background_sprite = new t3v::sprite("../assets/Wasserwelt.png");
 	m_background.use_sprite(*m_background_sprite);
 	m_background.position(0,0);
 	m_background.scale(1);
