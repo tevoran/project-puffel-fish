@@ -61,7 +61,7 @@ int main()
                               {255,0,0,255},48,1100,25);
 	    //test for damage function TODO: delete before release
 	    if((int) time_passed % 5 == 0)
-	        player.damage(0.05);
+	        //player.damage(0.05);
 
 
 	    //misc
