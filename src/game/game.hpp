@@ -98,6 +98,8 @@ namespace ppf
 			float yVel=0;
 		};
 
+		t3v::object2d m_background;
+		t3v::sprite *m_background_sprite=NULL;
 
 		t3v::object2d m_bubble;
 		t3v::sprite *m_bubble_sprite=NULL;

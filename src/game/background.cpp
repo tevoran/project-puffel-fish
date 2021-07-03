@@ -3,6 +3,11 @@
 
 ppf::background::background()
 {
+	m_background_sprite = new t3v::sprite("../assets/bg_big.bmp");
+	m_background.use_sprite(*m_background_sprite);
+	m_background.position(0,0);
+	m_background.scale(1);
+
 	m_bubble_sprite = new t3v::sprite("../assets/blase.bmp");
 	m_bubble.use_sprite(*m_bubble_sprite);
 	m_bubble.scale(2);
@@ -28,11 +33,13 @@ ppf::background::background()
 ppf::background::~background()
 {
 	delete m_bubble_sprite;
+	delete m_background_sprite;
 }
 
 void ppf::background::render(float t_delta)
 {
 	t3v::engine& te=t3v::engine::get();
+	m_background.render();
 
 	for(int i=0; i<BUBBLE_COUNT; i++)
 	{
