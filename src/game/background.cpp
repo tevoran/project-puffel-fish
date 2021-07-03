@@ -11,7 +11,7 @@ ppf::background::background()
 
 	bubble_struct tmp_bubble;
 	tmp_bubble.yVel=rand()%40-70;
-	tmp_bubble.xVel=-30;
+	tmp_bubble.xVel=-GAME_SPEED_HORIZONTAL;
 
 	for(int i=0; i<BUBBLE_COUNT; i++)
 	{
@@ -44,14 +44,14 @@ void ppf::background::render(float t_delta)
 		if(bubbles[i].yPos<-PLAYER_SIZE)
 		{
 			bubbles[i].yVel=rand()%65-70;
-			bubbles[i].xPos=rand()%(te.get_resx()/2)+(te.get_resx()/2);
+			bubbles[i].xPos=rand()%(te.get_resx())+(te.get_resx()/4);
 			bubbles[i].yPos=rand()%(te.get_resy()/2)+(te.get_resy()/2);
 		}
 
 		if(bubbles[i].xPos<-PLAYER_SIZE)
 		{
 			bubbles[i].yVel=rand()%65-70;
-			bubbles[i].xPos=rand()%(te.get_resx()/2)+(te.get_resx()/2);
+			bubbles[i].xPos=rand()%(te.get_resx())+(te.get_resx()/4);
 			bubbles[i].yPos=rand()%(te.get_resy()/2)+(te.get_resy()/2);
 		}
 

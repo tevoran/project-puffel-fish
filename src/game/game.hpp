@@ -10,8 +10,8 @@
 #define PLAYER_SIZE 32*4
 #define PLAYER_JUMP_SPEED 275
 
-
-#define BUBBLE_COUNT 35
+#define GAME_SPEED_HORIZONTAL 40
+#define BUBBLE_COUNT 25
 
 namespace ppf
 {
@@ -53,15 +53,29 @@ namespace ppf
 	class world
 	{
 	private:
+		struct world_element
+		{
+			t3v::object2d object;
+			float xPos;
+			float yPos;
+			float xVel;
+			float yVel;
+			int xSize;
+			int ySize;
+		};
+
 		//bottom
 		t3v::object2d m_bottom_hurdle;
         t3v::object2d m_bottom_hurdle1;
 		t3v::sprite *m_bottom_hurdle_sprite=NULL;
+		std::vector<world_element> m_bottom;
 
 		//top
 		t3v::object2d m_top_hurdle;
         t3v::object2d m_top_hurdle1;
 		t3v::sprite *m_top_hurdle_sprite=NULL;
+		std::vector<world_element> m_top;
+
 	public:
 		world();
 		~world();
