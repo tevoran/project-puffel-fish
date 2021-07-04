@@ -28,6 +28,10 @@ int main()
 	ppf::player player("../assets/Flachfisch.png", "../assets/Kugelfisch.png");
 	float points=0;
 
+	//menu
+	ppf::menu menu;
+	bool menu_trigger=true;
+
 	//background
 	ppf::background background;
 
@@ -35,7 +39,9 @@ int main()
 	ppf::world world;
 
 
+	menu.run(background, time, font);
 	bool quit=false;
+	
 	while(!quit)
 	{
 		//updates

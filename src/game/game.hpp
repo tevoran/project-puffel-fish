@@ -142,6 +142,15 @@ namespace ppf
 		void render(float t_delta);
 	};
 
+	class menu
+	{
+	private:
+	public:
+		menu();
+		~menu();
+		void run(ppf::background& background, ppf::time& time, t3v::font& font);
+	};
+
 	//collision
 	bool is_colliding(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2);
 }
