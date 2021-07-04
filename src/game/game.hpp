@@ -145,6 +145,8 @@ namespace ppf
 	class menu
 	{
 	private:
+	    bool activeFPS = false;
+	    float tmp = 0.5;
 	public:
 		menu();
 		~menu();

@@ -18,10 +18,12 @@ int main()
 	ppf::time time;
 	float time_passed = 0;
 	float size_cd = 0; //cooldown counter for size toggle
+	float tmp = 0.5;
 
 	//reading test font
 	t3v::font font("../assets/fonts/OpenSans-Regular.ttf");
-	te.activate_fps_counter(true, &font);
+	bool activeFPS = false;
+	te.activate_fps_counter(activeFPS, &font);
 
 
 	//player
@@ -49,10 +51,18 @@ int main()
 		te.update_input();
 		time_passed += time.get_delta();
 		size_cd += time.get_delta();
+		tmp += time.get_delta();
 		if(te.key_is_pressed(SDL_SCANCODE_ESCAPE))
 		{
 			quit=true;
 		}
+
+        if(te.key_is_pressed(SDL_SCANCODE_F) && tmp > 0.5){
+            activeFPS = !activeFPS;
+            te.activate_fps_counter(activeFPS, &font);
+            tmp = 0;
+        }
+
 		//background
 		background.render(time.get_delta());
 

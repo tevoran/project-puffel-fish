@@ -34,6 +34,7 @@ void ppf::menu::run(ppf::background& background, ppf::time& time, t3v::font& fon
 		te.update();
 		time.update();
 		te.update_input();
+		tmp += time.get_delta();
 		//end game in a hacky way, because this basically carries over into the main game loop
 		if(te.key_is_pressed(SDL_SCANCODE_ESCAPE))
 		{
@@ -45,6 +46,12 @@ void ppf::menu::run(ppf::background& background, ppf::time& time, t3v::font& fon
 		{
 			quit=true;
 		}
+
+        if(te.key_is_pressed(SDL_SCANCODE_F) && tmp > 0.5){
+            activeFPS = !activeFPS;
+            te.activate_fps_counter(activeFPS, &font);
+            tmp = 0;
+        }
 
 		//background
 		background.render(time.get_delta());
