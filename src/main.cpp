@@ -61,7 +61,7 @@ int main()
                               {255,0,0,255},48,1100,25);
 	    //test for collisions doing damage
 	    if(player.takesDamage(world))
-	        player.damage(0.1);
+	        player.damage(PLAYER_DAMAGE_SPEED*time.get_delta());
 
 
 	    //misc
