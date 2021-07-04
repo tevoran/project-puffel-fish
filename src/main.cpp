@@ -45,8 +45,8 @@ int main()
 	bool quit=false;
 	while(!quit)
 	{
-		//updates
-		te.update();
+		//updates 
+		te.update(); 
 		time.update();
 		te.update_input();
 		time_passed += time.get_delta();

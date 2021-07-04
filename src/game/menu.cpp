@@ -24,7 +24,7 @@ void ppf::menu::run(ppf::background& background, ppf::time& time, t3v::font& fon
 	t3v::sprite fish_small_sprite("../assets/Flachfisch.png");
 	fish_small.use_sprite(fish_small_sprite);
 	fish_small.scale(3);
-	fish_small.position(700,325);
+	fish_small.position(700,325); 
 
 
 	bool quit=false;

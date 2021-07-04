@@ -78,7 +78,7 @@ bool ppf::player::takesDamage(ppf::world &pWorld) const {
 
 bool ppf::player::takesDamageSmall(ppf::world &pWorld) const {
     //check with top objects
-    for(int i; i < pWorld.getMTop().size(); i++){
+    for(int i=0; i < pWorld.getMTop().size(); i++){
         if(ppf::is_colliding(xPos + PLAYER_SIZE_X/2, yPos + PLAYER_SIZE_Y/2, PLAYER_SIZE_X, PLAYER_SIZE_Y,
                              pWorld.getMTop().at(i).xPos,pWorld.getMTop().at(i).yPos,
                              WORLD_ELEMENT_SIZE_X, WORLD_ELEMENT_SIZE_Y))
@@ -86,7 +86,7 @@ bool ppf::player::takesDamageSmall(ppf::world &pWorld) const {
     }
 
     //check with bottom objects
-    for(int i; i < pWorld.getMBottom().size(); i++) {
+    for(int i=0; i < pWorld.getMBottom().size(); i++) {
         if (ppf::is_colliding(xPos + PLAYER_SIZE_X/2, yPos + PLAYER_SIZE_Y/2, PLAYER_SIZE_X, PLAYER_SIZE_Y,
                               pWorld.getMBottom().at(i).xPos, pWorld.getMBottom().at(i).yPos,
                               WORLD_ELEMENT_SIZE_X, WORLD_ELEMENT_SIZE_Y))
@@ -102,7 +102,7 @@ bool ppf::player::takesDamageSmall(ppf::world &pWorld) const {
 
 bool ppf::player::takesDamageBig(ppf::world &pWorld) const{
     //check with top objects
-    for(int i; i < pWorld.getMTop().size(); i++){
+    for(int i=0; i < pWorld.getMTop().size(); i++){
         if(ppf::is_colliding(xPos + PLAYER_SIZE_X, yPos + PLAYER_SIZE_Y, PLAYER_SIZE_X*4, PLAYER_SIZE_Y*4,
                              pWorld.getMTop().at(i).xPos,pWorld.getMTop().at(i).yPos,
                              WORLD_ELEMENT_SIZE_X, WORLD_ELEMENT_SIZE_Y))
@@ -110,7 +110,7 @@ bool ppf::player::takesDamageBig(ppf::world &pWorld) const{
     }
 
     //check with bottom objects
-    for(int i; i < pWorld.getMBottom().size(); i++){
+    for(int i=0; i < pWorld.getMBottom().size(); i++){
         if(ppf::is_colliding(xPos + PLAYER_SIZE_X, yPos + PLAYER_SIZE_Y, PLAYER_SIZE_X*4, PLAYER_SIZE_Y*4,
                              pWorld.getMBottom().at(i).xPos, pWorld.getMBottom().at(i).yPos,
                              WORLD_ELEMENT_SIZE_X, WORLD_ELEMENT_SIZE_Y))
