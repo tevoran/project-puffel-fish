@@ -11,7 +11,6 @@ int main()
 	te.set_resx(1366);
 	te.set_resy(768);
 	te.set_fullscreen(false);
-
 	te.start_renderer(TE_RENDERER_SOFTWARE_RASTERIZER_SINGLE_THREAD);
 
 	//timer
@@ -22,12 +21,12 @@ int main()
 
 	//reading test font
 	t3v::font font("../assets/fonts/OpenSans-Regular.ttf");
-
 	te.activate_fps_counter(true, &font);
 
 
 	//player
 	ppf::player player("../assets/Flachfisch.png", "../assets/Kugelfisch.png");
+	float points=0;
 
 	//background
 	ppf::background background;
@@ -67,8 +66,17 @@ int main()
 
 
 	    //misc
-        te.print_single_frame("Time: "+ std::to_string((int) time_passed) + " seconds", font,
+        te.print_single_frame("Points: "+ std::to_string((int) points), font,
                               {0,255,255,255}, 36, 525, 25);
+
+        if(player.getSmall())
+        {
+        	points+=PLAYER_POINTS_SMALL_SPEED*time.get_delta();
+        }
+        else
+        {
+        	points+=PLAYER_POINTS_BIG_SPEED*time.get_delta();        	
+        }
 
         if(te.key_is_pressed(SDL_SCANCODE_Q) && size_cd > 5){
             player.toggleSize();
@@ -82,9 +90,10 @@ int main()
                 if (te.key_is_pressed(SDL_SCANCODE_ESCAPE)) {
                     quit = true;
                 }
+
                 background.render(time.get_delta());
                 te.print_single_frame("Thanks for Playing!", font, {0, 255, 255, 255},
-                                      36, 525, 200);
+                                      36, 350, 200);
                 te.print_single_frame("You survived " + std::to_string((int) time_passed) + " seconds", font,
                                       {0, 255, 255, 255}, 36, 525, 400);
             }

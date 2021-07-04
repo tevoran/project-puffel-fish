@@ -13,6 +13,8 @@
 #define PLAYER_SIZE 32*4
 #define PLAYER_JUMP_SPEED 275
 #define PLAYER_DAMAGE_SPEED 30
+#define PLAYER_POINTS_SMALL_SPEED 10
+#define PLAYER_POINTS_BIG_SPEED 30
 
 #define BACKGROUND_SPEED_HORIZONTAL 40
 #define BUBBLE_COUNT 25
@@ -110,6 +112,7 @@ namespace ppf
         bool takesDamageBig(ppf::world &pWorld) const;
         bool takesDamageSmall(ppf::world &pWorld) const;
         void toggleSize();
+        bool getSmall(){return isSmall;};
     };
 
 	class background
