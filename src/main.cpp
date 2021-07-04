@@ -30,7 +30,6 @@ int main()
 
 	//menu
 	ppf::menu menu;
-	bool menu_trigger=true;
 
 	//background
 	ppf::background background;

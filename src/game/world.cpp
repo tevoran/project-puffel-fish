@@ -114,6 +114,10 @@ void ppf::world::render(float t_delta)
 
 	//respawn
 	x_spawn=x_current_max;
+	if(x_spawn<te.get_resx())
+	{
+		x_spawn=te.get_resx();
+	}
 
 	int i_max=0;
 	if(m_top.size()>=m_bottom.size())
