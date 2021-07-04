@@ -61,11 +61,11 @@ void t3v::engine::start_renderer(int renderer_type)
 	//creating the window for the renderer
 	if(m_is_fullscreen==true)
 	{
-		m_window=SDL_CreateWindow("T3Vtech test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_resx, m_resy, SDL_WINDOW_FULLSCREEN);
+		m_window=SDL_CreateWindow("PUFF PUFF by Team Tote Taube", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_resx, m_resy, SDL_WINDOW_FULLSCREEN);
 	}
 	else
 	{
-		m_window=SDL_CreateWindow("T3Vtech test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_resx, m_resy, 0);
+		m_window=SDL_CreateWindow("PUFF PUFF by Team Tote Taube", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_resx, m_resy, 0);
 	}
 	if(m_window==NULL)
 	{
