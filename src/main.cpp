@@ -41,8 +41,8 @@ int main()
 
 
 	menu.run(background, time, font);
+
 	bool quit=false;
-	
 	while(!quit)
 	{
 		//updates
@@ -111,6 +111,21 @@ int main()
                                       36, 350, 200);
                 te.print_single_frame("You got " + std::to_string((int) points) + " points", font,
                                       {0, 255, 255, 255}, 36, 525, 400);
+
+                te.print_single_frame("Press ENTER to restart", font,
+                                      {0, 255, 255, 255}, 64, 325, 600);
+
+                //restart
+                if(te.key_is_pressed(SDL_SCANCODE_RETURN))
+                {
+                	player.resetHP();
+                	player.resetPos();
+                	size_cd=0;
+                	time_passed = 0;
+                	points=0;
+                	break;
+                }
+
             }
         }
 	}

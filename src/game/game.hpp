@@ -113,6 +113,8 @@ namespace ppf
         bool takesDamageSmall(ppf::world &pWorld) const;
         void toggleSize();
         bool getSmall(){return isSmall;};
+        void resetHP(){hp=100;};
+        void resetPos(){xPos=300; yPos=0; yVel=0;};
     };
 
 	class background
