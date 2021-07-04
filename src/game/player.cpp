@@ -38,11 +38,18 @@ void ppf::player::gravity(float t_delta) {
     //crashing on ground
     t3v::engine& te=t3v::engine::get();
 
-    if(yPos>(te.get_resy()-PLAYER_SIZE))
-    {
-    	yPos=(te.get_resy()-PLAYER_SIZE);
-    	yVel=0;
+    if(isSmall) {
+        if(yPos > (te.get_resy() - PLAYER_SIZE_Y*2.5)){
+            yPos = (te.get_resy() - PLAYER_SIZE_Y*2.5);
+            yVel = 0;
+        }
+    } else{
+        if(yPos>(te.get_resy()-PLAYER_SIZE)){
+            yPos=(te.get_resy()-PLAYER_SIZE);
+            yVel=0;
+        }
     }
+
     m_player_object.position(xPos, yPos);
 }
 
@@ -58,6 +65,7 @@ bool ppf::player::takesDamage(ppf::world &pWorld) const {
     //check if fish leaves water
     if(yPos < -PLAYER_SIZE_Y)
         return true;
+
 
     if(takesDamageSmall(pWorld) && isSmall)
         return true;
@@ -85,6 +93,10 @@ bool ppf::player::takesDamageSmall(ppf::world &pWorld) const {
             return true;
     }
 
+    t3v::engine& te=t3v::engine::get();
+    if(yPos>(te.get_resy()-PLAYER_SIZE_Y*2.75))
+        return true;
+
     return false;
 }
 
@@ -104,6 +116,10 @@ bool ppf::player::takesDamageBig(ppf::world &pWorld) const{
                              WORLD_ELEMENT_SIZE_X, WORLD_ELEMENT_SIZE_Y))
             return true;
     }
+
+    t3v::engine& te=t3v::engine::get();
+    if(yPos>(te.get_resy()-PLAYER_SIZE*1.1))
+        return true;
 
     return false;
 }
