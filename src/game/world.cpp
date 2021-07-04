@@ -17,7 +17,7 @@ ppf::world::world()
 	//top
 	ppf::world::world_element tmp_top_element;
 	tmp_top_element.object=m_top_hurdle;
-	tmp_top_element.xPos=te.get_resx()/2+rand()%(te.get_resx()/2);
+	tmp_top_element.xPos=te.get_resx()*1.1+rand()%(te.get_resx()/2);
 	tmp_top_element.yPos=-WORLD_ELEMENT_SIZE_Y+rand()%WORLD_ELEMENT_SIZE_Y;
 	tmp_top_element.xVel=-GAME_SPEED_HORIZONTAL;
 	tmp_top_element.yVel=0;
