@@ -26,7 +26,7 @@ int main()
 
 
 	//player
-	ppf::player player("../assets/Kugelfisch.png");
+	ppf::player player("../assets/Flachfisch.png", "../assets/Kugelfisch.png");
 
 	//background
 	ppf::background background;
@@ -67,6 +67,7 @@ int main()
 	    //misc
         te.print_single_frame("Time: "+ std::to_string((int) time_passed) + " seconds", font,
                               {0,255,255,255}, 36, 525, 25);
+
 
         if(player.getHp() < 0) {
             while (!quit) {

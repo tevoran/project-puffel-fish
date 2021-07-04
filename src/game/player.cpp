@@ -1,18 +1,21 @@
 #include "game.hpp"
 
-ppf::player::player(const char *path_to_player_sprite)
+ppf::player::player(const char *path_to_player_sprite_small, const char *path_to_player_sprite_big)
 {
     xPos = 300;
     yPos = 0;
-	m_player_sprite = new t3v::sprite(path_to_player_sprite);
-	m_player_object.use_sprite(*m_player_sprite);
+	m_player_sprite_small = new t3v::sprite(path_to_player_sprite_small);
+    m_player_sprite_big = new t3v::sprite(path_to_player_sprite_big);
+	m_player_object.use_sprite(*m_player_sprite_small);
 	m_player_object.position(xPos,yPos);
-	m_player_object.scale(4); //is hardcoded, if this is changed, change it in game.hpp as well
+	m_player_object.scale(SCALE_SMALL); //is hardcoded, if this is changed, change it in game.hpp as well
+	isSmall = true;
 }
 
 ppf::player::~player()
 {
-	delete m_player_sprite;
+	delete m_player_sprite_small;
+	delete m_player_sprite_big;
 }
 
 void ppf::player::input()
@@ -73,6 +76,19 @@ bool ppf::player::takesDamage(ppf::world &pWorld) const{
         return true;
 
     return false;
+}
+
+void ppf::player::toggleSize() {
+    if(isSmall){
+        m_player_object.use_sprite(*m_player_sprite_big);
+        m_player_object.scale(SCALE_BIG);
+        isSmall = false;
+    }
+    else{
+        m_player_object.use_sprite(*m_player_sprite_small);
+        m_player_object.scale(SCALE_SMALL);
+        isSmall = true;
+    }
 }
 
 

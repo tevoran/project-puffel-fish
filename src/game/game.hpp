@@ -22,6 +22,9 @@
 #define HURDLE_MIN_SPACE 250
 #define HURDLE_SPAWN_SPEED 5
 
+#define SCALE_SMALL 3
+#define SCALE_BIG 5
+
 
 namespace ppf
 {
@@ -78,7 +81,8 @@ namespace ppf
 	{
 	private:
 		t3v::object2d  m_player_object;
-		t3v::sprite *m_player_sprite=NULL;
+		t3v::sprite *m_player_sprite_small=NULL;
+        t3v::sprite *m_player_sprite_big=NULL;
 
 		//position
 		float xPos=0;
@@ -88,10 +92,12 @@ namespace ppf
 		float xVel=0;
 		float yVel=0;
 
+		//misc
 		float hp=100;
+		bool isSmall;
 
     public:
-		player(const char *path_to_player_sprite);
+		player(const char *path_to_player_sprite_small, const char *path_to_player_sprite_big);
 		~player();
 
 		void input();
@@ -100,6 +106,7 @@ namespace ppf
         float getHp() const;
         void damage(float hp);
         bool takesDamage(ppf::world &pWorld) const;
+        void toggleSize();
     };
 
 	class background
