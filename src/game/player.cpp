@@ -38,11 +38,18 @@ void ppf::player::gravity(float t_delta) {
     //crashing on ground
     t3v::engine& te=t3v::engine::get();
 
-    if(yPos>(te.get_resy()-PLAYER_SIZE))
-    {
-    	yPos=(te.get_resy()-PLAYER_SIZE);
-    	yVel=0;
+    if(isSmall) {
+        if(yPos > (te.get_resy() - PLAYER_SIZE_Y*2.5)){
+            yPos = (te.get_resy() - PLAYER_SIZE_Y*2.5);
+            yVel = 0;
+        }
+    } else{
+        if(yPos>(te.get_resy()-PLAYER_SIZE)){
+            yPos=(te.get_resy()-PLAYER_SIZE);
+            yVel=0;
+        }
     }
+
     m_player_object.position(xPos, yPos);
 }
 
@@ -87,7 +94,7 @@ bool ppf::player::takesDamageSmall(ppf::world &pWorld) const {
     }
 
     t3v::engine& te=t3v::engine::get();
-    if(yPos>(te.get_resy()-PLAYER_SIZE_Y*2))
+    if(yPos>(te.get_resy()-PLAYER_SIZE_Y*2.75))
         return true;
 
     return false;
