@@ -18,6 +18,7 @@ int main()
 	srand(time(NULL));
 	ppf::time time;
 	float time_passed = 0;
+	float size_cd = 0; //cooldown counter for size toggle
 
 	//reading test font
 	t3v::font font("../assets/fonts/OpenSans-Regular.ttf");
@@ -43,6 +44,7 @@ int main()
 		time.update();
 		te.update_input();
 		time_passed += time.get_delta();
+		size_cd += time.get_delta();
 		if(te.key_is_pressed(SDL_SCANCODE_ESCAPE))
 		{
 			quit=true;
@@ -68,6 +70,10 @@ int main()
         te.print_single_frame("Time: "+ std::to_string((int) time_passed) + " seconds", font,
                               {0,255,255,255}, 36, 525, 25);
 
+        if(te.key_is_pressed(SDL_SCANCODE_Q) && size_cd > 5){
+            player.toggleSize();
+            size_cd = 0;
+        }
 
         if(player.getHp() < 0) {
             while (!quit) {
