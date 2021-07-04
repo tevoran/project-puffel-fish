@@ -94,7 +94,7 @@ int main()
                 background.render(time.get_delta());
                 te.print_single_frame("Thanks for Playing!", font, {0, 255, 255, 255},
                                       36, 350, 200);
-                te.print_single_frame("You survived " + std::to_string((int) time_passed) + " seconds", font,
+                te.print_single_frame("You got " + std::to_string((int) points) + " points", font,
                                       {0, 255, 255, 255}, 36, 525, 400);
             }
         }

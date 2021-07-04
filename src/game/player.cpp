@@ -59,6 +59,7 @@ bool ppf::player::takesDamage(ppf::world &pWorld) const {
     if(yPos < -PLAYER_SIZE_Y)
         return true;
 
+
     if(takesDamageSmall(pWorld) && isSmall)
         return true;
 
@@ -85,6 +86,10 @@ bool ppf::player::takesDamageSmall(ppf::world &pWorld) const {
             return true;
     }
 
+    t3v::engine& te=t3v::engine::get();
+    if(yPos>(te.get_resy()-PLAYER_SIZE_Y*2))
+        return true;
+
     return false;
 }
 
@@ -104,6 +109,10 @@ bool ppf::player::takesDamageBig(ppf::world &pWorld) const{
                              WORLD_ELEMENT_SIZE_X, WORLD_ELEMENT_SIZE_Y))
             return true;
     }
+
+    t3v::engine& te=t3v::engine::get();
+    if(yPos>(te.get_resy()-PLAYER_SIZE*1.1))
+        return true;
 
     return false;
 }
