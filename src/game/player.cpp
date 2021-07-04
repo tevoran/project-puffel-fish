@@ -54,10 +54,44 @@ void ppf::player::damage(float pDamage) {
     hp -= pDamage;
 }
 
-bool ppf::player::takesDamage(ppf::world &pWorld) const{
+bool ppf::player::takesDamage(ppf::world &pWorld) const {
+    //check if fish leaves water
+    if(yPos < -PLAYER_SIZE_Y)
+        return true;
+
+    if(takesDamageSmall(pWorld) && isSmall)
+        return true;
+
+    if(takesDamageBig(pWorld) && !isSmall)
+        return true;
+
+    return false;
+}
+
+bool ppf::player::takesDamageSmall(ppf::world &pWorld) const {
     //check with top objects
     for(int i; i < pWorld.getMTop().size(); i++){
-        if(ppf::is_colliding(xPos + PLAYER_SIZE_X, yPos + PLAYER_SIZE_Y, PLAYER_SIZE_X*2, PLAYER_SIZE_Y*2,
+        if(ppf::is_colliding(xPos + PLAYER_SIZE_X/2, yPos + PLAYER_SIZE_Y/2, PLAYER_SIZE_X, PLAYER_SIZE_Y,
+                             pWorld.getMTop().at(i).xPos,pWorld.getMTop().at(i).yPos,
+                             WORLD_ELEMENT_SIZE_X, WORLD_ELEMENT_SIZE_Y))
+            return true;
+    }
+
+    //check with bottom objects
+    for(int i; i < pWorld.getMBottom().size(); i++) {
+        if (ppf::is_colliding(xPos + PLAYER_SIZE_X, yPos + PLAYER_SIZE_Y, PLAYER_SIZE_X, PLAYER_SIZE_Y,
+                              pWorld.getMBottom().at(i).xPos, pWorld.getMBottom().at(i).yPos,
+                              WORLD_ELEMENT_SIZE_X, WORLD_ELEMENT_SIZE_Y))
+            return true;
+    }
+
+    return false;
+}
+
+bool ppf::player::takesDamageBig(ppf::world &pWorld) const{
+    //check with top objects
+    for(int i; i < pWorld.getMTop().size(); i++){
+        if(ppf::is_colliding(xPos + PLAYER_SIZE_X, yPos + PLAYER_SIZE_Y, PLAYER_SIZE_X*4, PLAYER_SIZE_Y*4,
                              pWorld.getMTop().at(i).xPos,pWorld.getMTop().at(i).yPos,
                              WORLD_ELEMENT_SIZE_X, WORLD_ELEMENT_SIZE_Y))
             return true;
@@ -65,18 +99,16 @@ bool ppf::player::takesDamage(ppf::world &pWorld) const{
 
     //check with bottom objects
     for(int i; i < pWorld.getMBottom().size(); i++){
-        if(ppf::is_colliding(xPos + PLAYER_SIZE_X, yPos + PLAYER_SIZE_Y, PLAYER_SIZE_X*2, PLAYER_SIZE_Y*2,
+        if(ppf::is_colliding(xPos + PLAYER_SIZE_X, yPos + PLAYER_SIZE_Y, PLAYER_SIZE_X*4, PLAYER_SIZE_Y*4,
                              pWorld.getMBottom().at(i).xPos, pWorld.getMBottom().at(i).yPos,
                              WORLD_ELEMENT_SIZE_X, WORLD_ELEMENT_SIZE_Y))
             return true;
     }
 
-    //check if fish leaves water
-    if(yPos < -PLAYER_SIZE_Y)
-        return true;
-
     return false;
 }
+
+
 
 void ppf::player::toggleSize() {
     if(isSmall){
@@ -90,5 +122,6 @@ void ppf::player::toggleSize() {
         isSmall = true;
     }
 }
+
 
 

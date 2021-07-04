@@ -107,6 +107,8 @@ namespace ppf
         float getHp() const;
         void damage(float hp);
         bool takesDamage(ppf::world &pWorld) const;
+        bool takesDamageBig(ppf::world &pWorld) const;
+        bool takesDamageSmall(ppf::world &pWorld) const;
         void toggleSize();
     };
 
